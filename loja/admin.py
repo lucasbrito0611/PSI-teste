@@ -13,7 +13,7 @@ class CategoriaAdmin(admin.ModelAdmin):
 
 class ProdutoAdmin(admin.ModelAdmin):
     date_hierarchy = 'criado_em'
-    list_display = ('Produto', 'destaque', 'promocao', 'msgPromocao', 'preco', 'categoria',)
+    list_display = ('Produto', 'destaque', 'promocao', 'msgPromocao', 'preco', 'categoria', 'fabricante')
     empty_value_display = 'Vazio'
     search_fields = ('Produto',)
 

@@ -8,19 +8,21 @@ def list_produto_view(request, id=None):
     categoria = request.GET.get('categoria')
     fabricante = request.GET.get('fabricante')
 
-    produtos = Produto.objects.filter(Produto=produto)
-    print(produtos)
-
-    if destaque is not None:
-        print(destaque)
+    produtos = Produto.objects.all()
+    # print(produtos)
     if produto is not None:
-        print(produto)
+        produtos = produtos.filter(Produto=produto)
     if promocao is not None:
-        print(promocao)
+        produtos = produtos.filter(promocao=promocao)
+    if destaque is not None:
+        produtos = produtos.filter(destaque=destaque)
     if categoria is not None:
-        print(categoria)
+        produtos = produtos.filter(categoria__Categoria=categoria)
     if fabricante is not None:
-        print(fabricante)
+        produtos = produtos.filter(fabricante__Fabricante=fabricante)
+    if id is not None:
+        produtos = produtos.filter(id=id)
+    print(produtos)
 
     if id is None:
         return HttpResponse('<h1>Produto não encontrado: nenhum id foi informado</h1>')
