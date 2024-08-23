@@ -1,3 +1,4 @@
+from multiprocessing import context
 from django.shortcuts import render, redirect
 from loja.models import Produto
 
@@ -60,4 +61,41 @@ def edit_produto_postback(request, id=None):
         except Exception as e:
             print("Erro salvando edição de produto: %s" % e)
     
+    return redirect("/produto")
+
+def details_produto_view(request, id=None):
+    produtos = Produto.objects.all()
+
+    if id is not None:
+        produtos = produtos.filter(id=id)
+
+    produto = produtos.first()
+
+    context = {'produto': produto}
+
+    return render(request, template_name='produto/produto-details.html', context=context, status=200)
+
+def delete_produto_view(request, id=None):
+    produtos = Produto.objects.all()
+    
+    if id is not None:
+        produtos = produtos.filter(id=id)
+
+    produto = produtos.first()
+
+    context = {'produto': produto}
+
+    return render(request, template_name='produto/produto-delete.html', context=context, status=200)
+
+def delete_produto_postback(request, id=None):
+    if request.method == 'POST':
+        id = request.POST.get('id')
+        produto = request.POST.get("Produto")
+
+        try:
+            Produto.objects.filter(id=id).delete()
+            print("Produto %s excluido com sucesso" % produto)
+        except Exception as e:
+            print("Erro salvando edição de produto: %s" % e)
+        
     return redirect("/produto")
