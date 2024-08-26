@@ -99,3 +99,6 @@ def delete_produto_postback(request, id=None):
             print("Erro salvando edição de produto: %s" % e)
         
     return redirect("/produto")
+
+def create_produto_view(request, id=None):
+    return render(request, template_name='produto/produto-create.html',status=200)

@@ -7,7 +7,10 @@
 {% block content %}
 <div id="content">
     <div class="container">
-        <div class="alert alert-info">Produtos encontrados [{{ produtos | length }}]</div>
+        <div class="alert alert-info">
+            <a href="{% url 'create_produto' %}" class="btn btn-primary mr-2"><i class="fa fa-plus"></i>Novo Produto</a>
+            Produtos encontrados [{{ produtos | length }}]
+        </div>
         {% for prod in produtos %}
         <div class="row">
             <h5 class="col-md-3">{{prod.Produto}}</h5>
