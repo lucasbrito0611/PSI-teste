@@ -33,6 +33,24 @@
                 <label for="preco" class="col-md-2">Preço</label>
                 <input name="preco">
             </div>
+            <div class="row">
+                <label for="CategoriaFk" class="col-md-2">Categorias</label>
+                <select name="CategoriaFk">
+                    <option value="-1">-----</option>
+                    {% for cate in categorias %}
+                        <option value="{{cate.id}}">{{cate.Categoria}}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="row">
+                <label for="FabricanteFk" class="col-md-2" >Fabricantes</label>
+                <select name="FabricanteFk">
+                    <option value="-1">-----</option>
+                    {% for fabri in fabricantes %}
+                        <option value="{{fabri.id}}">{{fabri.Fabricante}}</option>
+                    {% endfor %}
+                </select>
+            </div>
             <div class="row mt-2">
                 <label for="image" class="col-md-2">Imagem</label>
                 <input type="file" name="image">
