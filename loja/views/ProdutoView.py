@@ -53,12 +53,16 @@ def edit_produto_postback(request, id=None):
         destaque = request.POST.get('destaque')
         promocao = request.POST.get('promocao')
         msgPromocao = request.POST.get('msgPromocao')
+        categoria = request.POST.get('CategoriaFk')
+        fabricante = request.POST.get('FabricanteFk')
 
         try:
             obj_produto = Produto.objects.filter(id=id).first()
             obj_produto.Produto = produto
             obj_produto.destaque = (destaque is not None)
             obj_produto.promocao = (promocao is not None)
+            obj_produto.fabricante = Fabricante.objects.filter(id=fabricante).first()
+            obj_produto.categoria = Categoria.objects.filter(id=categoria).first()
 
             if msgPromocao is not None:
                 obj_produto.msgPromocao = msgPromocao
