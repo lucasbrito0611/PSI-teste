@@ -12,6 +12,11 @@
         <div class="container-fluid">
             <div class="row">
                 <form action="" method="POST" class="col-md-6 col-lg-4 offset-md-3 offset-lg-4">
+                    {% if message is not None %}
+                    <div class="alert alert-{{ message.type }}">
+                        {{ message.text }}
+                    </div>
+                    {% endif %}
                     <div class="row">
                         {% csrf_token %}
                         {% for f in userForm %}
@@ -19,6 +24,9 @@
                                 <div class="form-group col-md-6">
                                     {{ f.label }}
                                     {{ f }}
+                                    {% for error in f.errors%}
+                                        <div class="invalid-feedback" style="display: initial;">{{ error }}</div>
+                                    {% endfor %}
                                 </div>
                             {% else %}
                                 {{ f }}
@@ -30,12 +38,16 @@
                                 <div class="form-group col-md-6">
                                     {{ f.label }}
                                     {{ f }}
+                                    {% for error in f.errors%}
+                                        <div class="invalid-feedback" style="display: initial;">{{ error }}</div>
+                                    {% endfor %}
                                 </div>
                             {% else %}
                                 {{ f }}
                             {% endif %}
                         {% endfor %}
                     </div>
+                    <button type="submit" class="btn btn-primary">Salvar</button>
                 </form>
             </div>
         </div>
