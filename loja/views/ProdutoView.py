@@ -1,5 +1,5 @@
-from multiprocessing import context
 from django.shortcuts import render, redirect
+from django.contrib.auth.decorators import login_required
 from django.core.files.storage import FileSystemStorage
 from django.utils import timezone
 
@@ -31,6 +31,8 @@ def list_produto_view(request, id=None):
 
     return render(request, template_name='produto/produto.html', context=context, status=200)
 
+
+@login_required
 def edit_produto_view(request, id=None):
     produtos = Produto.objects.all()
 
