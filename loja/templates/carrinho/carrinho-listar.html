@@ -22,7 +22,15 @@
                 {% for item in itens %}
                     <div class="row">
                         <a class="col-md-4"> {{ item.produto.Produto }}</a>
-                        <a class="col-md-2"> {{ item.quantidade }}</a>
+                        <a class="col-md-2">
+                            <a href="">
+                                <i class="fa fa-minus"></i>
+                            </a>
+                            {{ item.quantidade }} 
+                            <a href="">
+                                <i class="fa fa-plus"></i>
+                            </a>
+                        </a>
                         <a class="col-md-2">R$ {{ item.preco|floatformat:2 }}</a>
                         <a class="col-md-2">R$ {{ item.total }}</a>
                         <a class="col-md-2"> 

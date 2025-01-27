@@ -5,6 +5,7 @@
 
 {% block styles %}
     <link rel="stylesheet" href="{% static 'css/home.css' %}">
+    <link rel="stylesheet" href="{% static 'css/carrinho_confirmado.css' %}">
 {% endblock %}
 
 {% block content %}
@@ -17,6 +18,17 @@
                 </div>
                 <div class="alert alert-info"> 
                     <h5>Pedido Número: {{carrinho.id}}</h5> 
+                </div>
+                <div class="itens">
+                    {% for item in carrinho.itens.all %}
+                    <div class="container-item">
+                        <img src="{{ item.produto.image.url }}" alt="">
+                        <p>Nome: {{ item.produto.Produto }}</p>
+                        <p>Preço: {{ item.produto.preco }}</p>
+                        <p>Quantidade: {{ item.quantidade }}</p>
+                        <p>Total: {{ item.total }}</p>
+                    </div>
+                    {% endfor %}
                 </div>
                 <div class="alert alert-info">
                     <h5 class="mt-4">Total: R$ {{ carrinho.total|floatformat:2 }}</h5>

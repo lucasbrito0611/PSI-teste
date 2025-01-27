@@ -1,0 +1,20 @@
+.itens {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5em;
+    margin: 2em 0;
+    & img {
+        width: 200px;
+        aspect-ratio: 1/1;
+        margin-bottom: 1em;
+    }
+    & p {
+        margin-bottom: 0;
+    }
+}
+
+.container-item {
+    display: flex;
+    flex-direction: column;
+    gap: .7em;
+}

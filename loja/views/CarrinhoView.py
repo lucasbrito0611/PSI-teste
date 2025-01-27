@@ -76,15 +76,12 @@ def remover_item_view(request, item_id):
 
 @login_required
 def confirmar_carrinho_view(request):
-    print ('confirmar_carrinho_view')
     carrinho = None
     carrinho_id = request.session.get('carrinho_id')
 
     if carrinho_id:
-        print ('carrinho: ' + str(carrinho_id))
         carrinho = Carrinho.objects.filter(id=carrinho_id).first()
         usuario = get_object_or_404(Usuario, user=request.user)
-        print ('Usuario: ' + str(usuario))
 
         if usuario:
             carrinho.user_id = usuario.id
@@ -92,7 +89,6 @@ def confirmar_carrinho_view(request):
             carrinho.confirmado_em = timezone.make_aware(datetime.today())
 
             carrinho.save()
-            print ('carrinho salvo')
 
     context = {
         'carrinho': carrinho
