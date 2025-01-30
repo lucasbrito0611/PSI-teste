@@ -95,3 +95,18 @@ def confirmar_carrinho_view(request):
     }
 
     return render(request, 'carrinho/carrinho-confirmado.html', context=context)
+
+def aumentar_quantidade(request, item_id):
+    item = get_object_or_404(CarrinhoItem, id=item_id)
+    item.quantidade += 1
+    item.save()
+
+    return redirect('/carrinho')
+
+def diminuir_quantidade(request, item_id):
+    item = get_object_or_404(CarrinhoItem, id=item_id)
+    if item.quantidade > 1:
+        item.quantidade -= 1
+        item.save()
+
+    return redirect('/carrinho')
