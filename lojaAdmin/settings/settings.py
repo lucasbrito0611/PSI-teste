@@ -3,16 +3,13 @@ import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
-STATIC_ROOT=os.path.join(BASE_DIR, 'static')
+STATIC_ROOT=os.path.join(BASE_DIR, 'static', 'staticfiles_build')
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure--@q81ap$%h#3fqqot15-2z@s4%g%d9je=$o5#a6l&^a+ilbq1y'
-
-
-
+SECRET_KEY = os.environ.get('SECRET_KEY')
 
 # Application definition
 
@@ -54,18 +51,31 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'lojaAdmin.wsgi.application'
+# WSGI_APPLICATION = 'lojaAdmin.wsgi.application'
+WSGI_APPLICATION = 'lojaAdmin.wsgi.app'
 
 
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': BASE_DIR / 'db.sqlite3',
+#     }
+# }
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'neondb',
+        'USER': 'neondb_owner',
+        'PASSWORD': 'npg_XWL8oQ9MJCvl',
+        'HOST': 'ep-sparkling-rain-a8v31umy-pooler.eastus2.azure.neon.tech',
+        'PORT': '5432',
+        'OPTIONS': {'sslmode': 'require'},
     }
 }
+# npg_XWL8oQ9MJCvl@ep-sparkling-rain-a8v31umy-pooler.eastus2.azure.neon.tech/neondb
 
 
 # Password validation
