@@ -66,7 +66,7 @@ WSGI_APPLICATION = 'lojaAdmin.wsgi.app'
 # }
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg',
+        'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'neondb',
         'USER': 'neondb_owner',
         'PASSWORD': 'npg_XWL8oQ9MJCvl',
