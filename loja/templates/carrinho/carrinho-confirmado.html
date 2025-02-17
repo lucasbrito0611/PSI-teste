@@ -22,7 +22,7 @@
                 <div class="itens">
                     {% for item in carrinho.itens.all %}
                     <div class="container-item">
-                        <img src="{{ item.produto.image.url }}" alt="">
+                        <img src="{% url 'get_image' item.produto.id %}" alt="Imagem do item">
                         <p>Nome: {{ item.produto.Produto }}</p>
                         <p>Preço: {{ item.produto.preco }}</p>
                         <p>Quantidade: {{ item.quantidade }}</p>
