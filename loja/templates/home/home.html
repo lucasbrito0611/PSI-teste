@@ -30,9 +30,8 @@
             {% for prod in produtos %}
             <div class="col-xs-9 col-md-3 col-lg-3">
                 <div class="card mb-4">
-                    <!-- <div class="image-circle" style="background-image: url({% url 'get_image' produto.id %});"></div> -->
                     {% if prod.id %}
-                        <img class="image-circle" src="{% url 'home' %}" alt="Imagem do Produto">
+                        <img class="image-circle" src="{% url 'get_image' prod.id %}" alt="Imagem do Produto">
                     {% endif %}
                     <div class="card-body" style="display: flex; flex-direction: column; gap: .5em;">
                         <h5 class="card-title">{{prod.Produto}}</h5>
