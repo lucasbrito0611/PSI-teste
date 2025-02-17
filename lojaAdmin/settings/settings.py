@@ -24,18 +24,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'cloudinary',
-    'cloudinary_storage',
     'loja',
 ]
-
-DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
-
-CLOUDINARY_STORAGE = {
-    'CLOUD_NAME': 'du0oxzva6',
-    'API_KEY': '187947338793991',
-    'API_SECRET': 'iYAB4VJG_PUKRKCWVbsZ3JJvXMs',
-}
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -128,7 +118,7 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 
-MEDIA_URL = 'https://res.cloudinary.com/du0oxzva6/'
+MEDIA_URL = 'media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media') 
 
 # Default primary key field type
