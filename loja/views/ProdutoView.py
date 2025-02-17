@@ -130,7 +130,7 @@ def create_produto_view(request, id=None):
         preco = request.POST.get('preco')
         categoria = request.POST.get('CategoriaFk')
         fabricante = request.POST.get('FabricanteFk')
-        image = request.POST.get('image')
+        image = request.FILES.get('image')
 
         try:
             obj_produto = Produto()
